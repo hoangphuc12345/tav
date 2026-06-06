@@ -113,6 +113,8 @@ const LazyVideo = ({
           ref={posterImgRef}
           src={poster}
           alt=""
+          loading="eager"
+          decoding="async"
           aria-hidden="true"
           onLoad={() => onPosterLoaded?.()}
           style={{
@@ -133,7 +135,7 @@ const LazyVideo = ({
           ref={videoRef}
           src={activeSrc}
           poster={poster}
-          preload={activeSrc ? "auto" : "none"}
+          preload={activeSrc ? "metadata" : "none"}
           autoPlay={autoPlay}
           loop={loop}
           muted={muted}

@@ -213,6 +213,7 @@ const View = ({
                       <img
                         src={media}
                         loading="lazy"
+                        decoding="async"
                         alt={name}
                         style={{
                           maxHeight: "80vh",
@@ -241,6 +242,7 @@ const View = ({
                         autoPlay
                         loop
                         muted
+                        preload="metadata"
                         maxH="80vh"
                         maxW="90vw"
                         borderRadius="2rem"

@@ -30,6 +30,7 @@ const Title = () => {
         <FadeImage
           src={dataApi?.[0].cover ?? ""}
           loadFullRes
+          noLazy
           placeholderBlur="8px"
           wrapStyle={{ width: "100%", aspectRatio: "200/187" }}
           style={{ objectFit: "contain" }}
