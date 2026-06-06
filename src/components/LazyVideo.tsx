@@ -55,6 +55,14 @@ const LazyVideo = ({
   const [activeSrc, setActiveSrc] = useState("");
   const [isReady, setIsReady] = useState(false);
 
+  const connection = typeof navigator !== "undefined" ? (navigator as any).connection : undefined;
+  const isSaveData = connection?.saveData;
+  const effectiveType = connection?.effectiveType as string | undefined;
+  const isSlowNetwork = isSaveData || /2g|3g/.test(effectiveType ?? "");
+  const shouldAutoPlay = autoPlay && !isSlowNetwork;
+  const preloadValue = activeSrc ? (isSlowNetwork ? "none" : "metadata") : "none";
+  const posterLoading = activeSrc ? "eager" : "lazy";
+
   useEffect(() => {
     const wrap = wrapRef.current;
     if (!wrap || !src) return;
@@ -65,7 +73,7 @@ const LazyVideo = ({
 
         if (entry.isIntersecting) {
           setActiveSrc(src);
-          if (autoPlay && videoRef.current && videoRef.current.paused) {
+          if (shouldAutoPlay && videoRef.current && videoRef.current.paused) {
             videoRef.current.play().catch(() => {});
           }
         } else {
@@ -74,14 +82,14 @@ const LazyVideo = ({
           }
         }
       },
-      { rootMargin: "800px 0px 800px 0px", threshold: 0 }
+      { rootMargin: "300px 0px 300px 0px", threshold: 0 }
     );
 
     observer.observe(wrap);
     return () => {
       observer.disconnect();
     };
-  }, [src, autoPlay]);
+  }, [src, shouldAutoPlay]);
 
   useEffect(() => {
     setIsReady(false);
@@ -116,7 +124,7 @@ const LazyVideo = ({
           ref={posterImgRef}
           src={derivedPoster}
           alt=""
-          loading="lazy"
+          loading={posterLoading}
           decoding="async"
           aria-hidden="true"
           onLoad={() => onPosterLoaded?.()}
@@ -138,8 +146,8 @@ const LazyVideo = ({
           ref={videoRef}
           src={activeSrc}
           poster={derivedPoster}
-          preload={activeSrc ? "metadata" : "none"}
-          autoPlay={autoPlay}
+          preload={preloadValue}
+          autoPlay={shouldAutoPlay}
           loop={loop}
           muted={muted}
           playsInline={playsInline}
