@@ -24,7 +24,7 @@ const scrollTop = () => {
       onClick={handleScroll}
       zIndex={99}
     >
-      <Image src={arrow1} width={{ base: "25px", md: "40px" }} />
+      <Image src={arrow1} decoding="async" width={{ base: "25px", md: "40px" }} />
     </Box>
   );
 };

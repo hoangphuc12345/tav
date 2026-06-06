@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import layoutRoutes from "@configs/layoutRoutes";
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { useDarkModeContext } from "@components/DarkModeContext";
 import { defaultTheme } from "@themes/defaut-theme";
@@ -10,17 +10,19 @@ import Layout from "@pages/layout";
 import AuthLayout from "@modules/admin/layouts/auth";
 import AdminLayout from "@modules/admin/layouts/admin";
 import CheckLogin from "@modules/admin/components/checklogin";
-import ProductsLayout from "@pages/products/ProductsLayout";
-import MAPPING_3D from "@pages/products/components/3d_mapping";
-import Model3D from "@pages/products/components/3d_model";
-import Render3D from "@pages/products/components/3d_render";
-import INTERACTIVE from "@pages/products/components/interactive";
+
+const ProductsLayout = lazy(() => import("@pages/products/ProductsLayout"));
+const MAPPING_3D = lazy(() => import("@pages/products/components/3d_mapping"));
+const Model3D = lazy(() => import("@pages/products/components/3d_model"));
+const Render3D = lazy(() => import("@pages/products/components/3d_render"));
+const INTERACTIVE = lazy(() => import("@pages/products/components/interactive"));
 
 const RouterContainer = () => {
   const { isDarkMode } = useDarkModeContext();
   const [currentTheme, setCurrentTheme] = useState(initialTheme);
 
   return (
+    <Suspense fallback={<div />}>
       <Routes>
         <Route
           path="/*"
@@ -71,6 +73,7 @@ const RouterContainer = () => {
           }
         />
       </Routes>
+    </Suspense>
   );
 };
 

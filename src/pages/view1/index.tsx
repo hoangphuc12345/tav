@@ -288,13 +288,8 @@ const View1 = ({
             bottom={0}
           >
             <Button
-              bg="none"
+              bg={"none"}
               _hover={{ bg: "none" }}
-              color="white"
-              fontSize="1.4rem"
-              fontWeight="400"
-              left={0}
-              mb={10}
               onClick={goToPreviousProject}
               isDisabled={currentProjectIndex === 0}
             >
@@ -308,29 +303,27 @@ const View1 = ({
                 onClick={handlePrev}
                 isDisabled={currentIndex === 0}
               >
-                <Image src={arrowLeft} />
+                <Image src={arrowLeft} decoding="async" />
               </Button>
               <Text fontSize="1.6rem" color="white">
                 {currentIndex + 1}/{filteredMediaList.length}
               </Text>
               <Button
-                bg="none"
+                bg={"none"}
                 _hover={{ bg: "none" }}
                 onClick={handleNext}
                 isDisabled={currentIndex === filteredMediaList.length - 1}
               >
-                <Image src={arrowRight} />
+                <Image src={arrowRight} decoding="async" />
               </Button>
             </Stack>
 
             <Button
-              bg="none"
+              bg={"none"}
               _hover={{ bg: "none" }}
-              color="white"
-              fontSize="1.4rem"
-              fontWeight="400"
-              right={0}
-              mb={10}
+              color={"white"}
+              fontSize={"1.4rem"}
+              fontWeight={"400"}
               onClick={goToNextProject}
               isDisabled={currentProjectIndex === datamenuproduct.length - 1}
             >

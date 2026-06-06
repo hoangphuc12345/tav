@@ -98,7 +98,7 @@ const Title = () => {
               borderRadius={"12px"}
               boxShadow="0 4px 10px rgba(245, 113, 42, 0.5)"
             >
-              <Image src={iconMap[item.id]} width={"30px"} />
+              <Image src={iconMap[item.id]} decoding="async" width={"30px"} />
             </Box>
             <Text
               key={index}

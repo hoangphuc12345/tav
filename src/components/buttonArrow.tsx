@@ -25,7 +25,7 @@ const ButtonArrow = ({ ...props }: IButtonArrow) => {
       <Text sx={{ ...props.sxText }} color={"white"}>
         {props.title}
       </Text>
-      <Image src={arrow} />
+      <Image src={arrow} decoding="async" />
     </Stack>
   );
 };

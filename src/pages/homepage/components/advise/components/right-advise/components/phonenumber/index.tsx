@@ -109,8 +109,8 @@ const PhoneNumber = ({
           }}
         >
           <Stack direction={"row"} alignItems="center" gap="1rem">
-            <Image src={selectedCountry.img} alt={selectedCountry.name} />
-            <Image src={arrowBottom} />
+            <Image src={selectedCountry.img} decoding="async" alt={selectedCountry.name} />
+            <Image src={arrowBottom} decoding="async" />
           </Stack>
         </InputLeftElement>
       </InputGroup>
@@ -143,7 +143,7 @@ const PhoneNumber = ({
             pb="5px"
             borderBottom={"1px solid #ccc"}
           >
-            <Image src={search} />
+            <Image src={search} decoding="async" />
             <Input
               placeholder="Search country..."
               fontSize="1.6rem"
@@ -170,7 +170,7 @@ const PhoneNumber = ({
                   handleSelectCountry(country), setSearchTerm("");
                 }}
               >
-                <Image src={country.img} />
+                <Image src={country.img} decoding="async" />
                 <Text fontSize="1.6rem">{country.name}</Text>
                 <Text fontSize="1.6rem" color={"#858585"}>
                   ({country.phone})

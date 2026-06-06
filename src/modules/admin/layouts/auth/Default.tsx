@@ -68,7 +68,7 @@ function AuthIllustration(props: {
           position="absolute"
           right="0px"
         >
-          <Image src={logo} w="100%" h="100%" objectFit={"contain"} />
+          <Image src={logo} decoding="async" w="100%" h="100%" objectFit={"contain"} />
 
           {/* <Flex
             bg={`url(${illustrationBackground})`}

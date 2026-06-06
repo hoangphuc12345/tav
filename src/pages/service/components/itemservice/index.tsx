@@ -48,7 +48,7 @@ const ItemService = () => {
             borderRadius={"10rem"}
             zIndex={2}
           >
-            <Image src={arrowRight} />
+            <Image src={arrowRight} decoding="async" />
           </Box>
 
           <Box height={{ base: "500px", md: "800px" }} width={"100%"}>

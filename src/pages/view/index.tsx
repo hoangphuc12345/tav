@@ -302,7 +302,7 @@ const View = ({
                 onClick={handlePrev}
                 isDisabled={currentIndex === 0}
               >
-                <Image src={arrowLeft} />
+                <Image src={arrowLeft} decoding="async" />
               </Button>
               <Text fontSize={"1.6rem"} color={"white"}>
                 {currentIndex + 1}/{mediaList.length}
@@ -313,7 +313,7 @@ const View = ({
                 onClick={handleNext}
                 isDisabled={currentIndex === (mediaList?.length ?? 0) - 1}
               >
-                <Image src={arrowRight} />
+                <Image src={arrowRight} decoding="async" />
               </Button>
             </Stack>
             <Button

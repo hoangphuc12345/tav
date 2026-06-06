@@ -41,7 +41,7 @@ const Content = () => {
         display={isFirstSlide ? "none" : "block"}
         cursor={"pointer"}
       >
-        <Image src={arrowRight} transform="scaleX(-1)" />
+        <Image src={arrowRight} decoding="async" transform="scaleX(-1)" />
       </Box>
       <Box
         className="project-button-next"
@@ -55,7 +55,7 @@ const Content = () => {
         display={isLastSlide ? "none" : "block"}
         cursor={"pointer"}
       >
-        <Image src={arrowRight} />
+        <Image src={arrowRight} decoding="async" />
       </Box>
 
       <Swiper
@@ -167,7 +167,7 @@ const Content = () => {
                         }}
                       />
                     ) : (
-                      <Image src={arrow} pr={"20px"} pt={"5px"} />
+                      <Image src={arrow} decoding="async" pr={"20px"} pt={"5px"} />
                     )}
                   </Box>
                 </Box>

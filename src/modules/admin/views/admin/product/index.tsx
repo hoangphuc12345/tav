@@ -437,7 +437,7 @@ export default function Overview() {
                   }
                   isDisabled={currentPage === 1}
                 >
-                  <Image src={arrowLeft} />
+                  <Image src={arrowLeft} decoding="async" />
                 </Button>
                 <Text>
                   <Text>
@@ -458,7 +458,7 @@ export default function Overview() {
                     Math.ceil((displayedItems.length || 0) / itemsPerPage)
                   }
                 >
-                  <Image src={arrowRight} />
+                  <Image src={arrowRight} decoding="async" />
                 </Button>
               </HStack>
             </ModalBody>

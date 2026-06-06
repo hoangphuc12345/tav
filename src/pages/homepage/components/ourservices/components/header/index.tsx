@@ -62,7 +62,7 @@ const Header = () => {
           cursor={"pointer"}
           height={"fit-content"}
         >
-          <Image src={isDarkMode ? ArrowLeft : ArrowLeft2} />
+          <Image src={isDarkMode ? ArrowLeft : ArrowLeft2} decoding="async" />
         </Stack>
         <Stack
           className="swiper-button-next"
@@ -75,7 +75,7 @@ const Header = () => {
           cursor={"pointer"}
           height={"fit-content"}
         >
-          <Image src={isDarkMode ? ArrowRight : ArrowRight2} />
+          <Image src={isDarkMode ? ArrowRight : ArrowRight2} decoding="async" />
         </Stack>
         <Stack
           direction={"row"}
@@ -112,6 +112,7 @@ const Header = () => {
             src={
               isDarkMode ? (isHover ? ArrowRight3 : ArrowRight1) : ArrowRight3
             }
+            decoding="async"
           />
         </Stack>
       </Stack>

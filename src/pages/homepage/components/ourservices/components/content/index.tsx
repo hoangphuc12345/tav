@@ -192,7 +192,7 @@ const Content = () => {
                         ? "Learn more"
                         : "もっと詳しく"}
                     </Text>
-                    <Image src={hoveredIndex === index ? arow1 : arrow} />
+                    <Image src={hoveredIndex === index ? arow1 : arrow} decoding="async" />
                   </Stack>
                 </Stack>
               </Stack>

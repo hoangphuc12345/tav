@@ -1,9 +1,11 @@
+import { lazy } from "react";
 import { RouteProps } from "react-router-dom";
-import HomePage from "@pages/homepage";
-import AboutUs from "@pages/aboutus";
-import Service from "@pages/service";
-import Blog from "@pages/blog";
-import BlogInfomation from "@pages/blogs_info";
+
+const HomePage = lazy(() => import("@pages/homepage"));
+const AboutUs = lazy(() => import("@pages/aboutus"));
+const Service = lazy(() => import("@pages/service"));
+const Blog = lazy(() => import("@pages/blog"));
+const BlogInfomation = lazy(() => import("@pages/blogs_info"));
 
 /**
  * Flat layout routes rendered by router-container.tsx.
