@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDarkModeContext } from "@components/DarkModeContext";
+import { getPosterUrl } from "@utils/mediaUtils";
 import "./LazyVideo.css";
 
 interface LazyVideoProps {
@@ -87,6 +88,8 @@ const LazyVideo = ({
     setActiveSrc("");
   }, [src]);
 
+  const derivedPoster = poster || getPosterUrl(src) || undefined;
+
   const handleLoaded = () => {
     setIsReady(true);
     onVideoLoaded?.();
@@ -108,12 +111,12 @@ const LazyVideo = ({
       aria-label={ariaLabel}
       aria-hidden={ariaHidden}
     >
-      {poster && (
+      {derivedPoster && (
         <img
           ref={posterImgRef}
-          src={poster}
+          src={derivedPoster}
           alt=""
-          loading="eager"
+          loading="lazy"
           decoding="async"
           aria-hidden="true"
           onLoad={() => onPosterLoaded?.()}
@@ -134,7 +137,7 @@ const LazyVideo = ({
         <video
           ref={videoRef}
           src={activeSrc}
-          poster={poster}
+          poster={derivedPoster}
           preload={activeSrc ? "metadata" : "none"}
           autoPlay={autoPlay}
           loop={loop}

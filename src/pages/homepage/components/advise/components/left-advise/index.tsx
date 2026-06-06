@@ -1,5 +1,6 @@
 import { Box, Stack, Text } from "@chakra-ui/react";
 import home from "@assets/videos/home.mp4";
+import bgHome from "@assets/image/bgHome.png";
 import ButtonArrow from "@components/buttonArrow";
 import { useLanguage } from "@components/LanguageContext";
 import LazyVideo from "@components/LazyVideo";
@@ -16,7 +17,7 @@ const LeftAdvise = () => {
     >
       <LazyVideo
         src={home}
-        poster=""
+        poster={bgHome}
         autoPlay={true}
         loop={true}
         muted={true}

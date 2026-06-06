@@ -4,7 +4,6 @@ import {
   ModalContent,
   ModalBody,
   Image,
-  chakra,
   IconButton,
   Button,
   Stack,
@@ -22,6 +21,8 @@ import { Zoom } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/zoom";
 import { useLanguage } from "@components/LanguageContext";
+import LazyVideo from "@components/LazyVideo";
+import { getPosterUrl } from "@utils/mediaUtils";
 
 type MediaDesc = { en: string; vi: string; ja: string };
 
@@ -235,20 +236,29 @@ const View = ({
                         height: "80vh",
                       }}
                     >
-                      <chakra.video
+                      <LazyVideo
                         src={media}
+                        poster={getPosterUrl(media)}
                         controls
                         playsInline
                         autoPlay
                         loop
                         muted
-                        preload="metadata"
-                        maxH="80vh"
-                        maxW="90vw"
-                        borderRadius="2rem"
-                        border="1px solid rgba(53, 53, 53, 1)"
-                        objectFit="contain"
-                        // onLoadedData={() => setIsLoading(false)}
+                        aspectRatio="auto"
+                        wrapStyle={{
+                          width: "90vw",
+                          height: "80vh",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain",
+                          borderRadius: "2rem",
+                          border: "1px solid rgba(53, 53, 53, 1)",
+                        }}
                       />
                     </Box>
                   )}

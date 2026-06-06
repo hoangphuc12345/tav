@@ -17,11 +17,12 @@ interface ThumbImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
  * - Tries the original extension first (e.g. _400x400.jpg). If the image fails
  *   to load (404), falls back to the .webp variant (_400x400.webp) once.
  * - All other URLs (local assets, Cloudinary, etc.): passed through unchanged.
- * - Always sets loading="eager" for faster display.
+ * - Defaults loading to "lazy" so many thumbnails do not download until needed.
+ * - For pages that require immediate display, pass loading="eager" explicitly.
  * - Forwards ref so parent components can read naturalWidth for cache detection.
  */
 const ThumbImage = forwardRef<HTMLImageElement, ThumbImageProps>(
-  ({ src, thumbSize = "400x400", alt = "", onError, ...props }, ref) => {
+  ({ src, thumbSize = "400x400", alt = "", onError, loading, ...props }, ref) => {
     const [fallbackSrc, setFallbackSrc] = useState<string | null>(null);
     const fallbackTried = useRef(false);
 
@@ -44,7 +45,7 @@ const ThumbImage = forwardRef<HTMLImageElement, ThumbImageProps>(
         ref={ref}
         src={displaySrc}
         alt={alt}
-        loading="eager"
+        loading={loading ?? "lazy"}
         decoding="async"
         onError={handleError}
         {...props}
